@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lez Eyecon Tournament Stats</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Tournament Logo" class="logo" />
+    <h1>Lez Eyecon Tournament 2025</h1>
+  </header>
+
+  <section class="points-table-section">
+    <h2>Points Table</h2>
+    <table id="pointsTable">
+      <thead>
+        <tr>
+          <th onclick="sortTable(0)">Team</th>
+          <th onclick="sortTable(1)">Matches</th>
+          <th onclick="sortTable(2)">Wins</th>
+          <th onclick="sortTable(3)">Losses</th>
+          <th onclick="sortTable(4)">Points</th>
+          <th onclick="sortTable(5)">NRR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lez Eyecon</td>
+          <td>3</td>
+          <td>2</td>
+          <td>1</td>
+          <td>4</td>
+          <td>+1.20</td>
+        </tr>
+        <tr>
+          <td>Shadow Hawks</td>
+          <td>3</td>
+          <td>3</td>
+          <td>0</td>
+          <td>6</td>
+          <td>+1.75</td>
+        </tr>
+        <tr>
+          <td>Viper Crew</td>
+          <td>3</td>
+          <td>1</td>
+          <td>2</td>
+          <td>2</td>
+          <td>-0.25</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Lez Eyecon Tournament | Created by Uttam</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
