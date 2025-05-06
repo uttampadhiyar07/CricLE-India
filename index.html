@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+/*<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -75,4 +75,147 @@
 
   <script src="script.js"></script>
 </body>
+</html>*/
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lez Eyecon Tournament Stats</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background-color: #202124;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .sidebar h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: white;
+      margin: 0.8rem 0;
+      display: flex;
+      align-items: center;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover {
+      background-color: #3c4043;
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+
+    .header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header .logo img {
+      height: 50px;
+      margin-right: 1rem;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 12px;
+      padding: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #202124;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h2>LE Stats</h2>
+    <a href="#">Home</a>
+    <a href="#points">Points Table</a>
+    <a href="#schedule">Schedule</a>
+    <a href="#players">Players</a>
+    <a href="#results">Results</a>
+    <a href="#about">About</a>
+  </aside>
+
+  <main class="main">
+    <div class="header">
+      <div class="logo">
+        <img src="logo.png" alt="Logo" />
+        <h1>Welcome to Lez Eyecon Tournament Stats</h1>
+      </div>
+      <img src="profile.png" alt="Profile" height="40" />
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Points Table</h3>
+        <p>Update your team's progress here.</p>
+      </div>
+      <div class="card">
+        <h3>Next Match</h3>
+        <p>Opponent details and schedule.</p>
+      </div>
+      <div class="card">
+        <h3>Top Scorer</h3>
+        <p>Player name and runs scored.</p>
+      </div>
+      <div class="card">
+        <h3>Best Bowler</h3>
+        <p>Player name and wickets taken.</p>
+      </div>
+    </div>
+  </main>
+</body>
 </html>
+
