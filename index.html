@@ -1,0 +1,278 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mahek • Friend Vibes (Blue–Cyan)</title>
+  <meta name="description" content="Friendly vibe page with an Alan Walker–style circular audio visualizer." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💙</text></svg>">
+  <style>
+    :root{
+      --bg: 230,245,255; /* light blue */
+      --fg: 20,30,40;
+      --card: 255,255,255;
+      --accent: 0,191,255;  /* cyan */
+      --accent2: 30,144,255; /* dodger blue */
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+    }
+    [data-theme="dark"]{
+      --bg: 15,20,30;
+      --fg: 236,236,244;
+      --card: 26,28,34;
+      --shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    *{ box-sizing:border-box }
+    html,body{ height:100% }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      color: rgb(var(--fg));
+      background:
+        radial-gradient(1000px 600px at 10% -10%, rgba(var(--accent), .18), rgba(var(--bg),1) 40%),
+        radial-gradient(1000px 600px at 110% 10%, rgba(var(--accent2), .16), rgba(var(--bg),1) 40%),
+        rgb(var(--bg));
+      transition: background .4s ease, color .3s ease;
+      overflow-x:hidden;
+    }
+    .wrap{ max-width: 980px; margin: 0 auto; padding: 22px; }
+    header{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin: 8px 0 16px; }
+    .brand{ display:flex; gap:14px; align-items:center; }
+    .brand .avatar{ width:52px; height:52px; border-radius:50%; display:grid; place-items:center; color:white; font-size:28px; box-shadow: var(--shadow); background: linear-gradient(135deg, rgba(var(--accent),.9), rgba(var(--accent2),.9)); }
+    .brand h1{ font-size:1.5rem; margin:0 }
+    .brand p{ margin:2px 0 0; opacity:.85; font-size:.95rem }
+    .actions{ display:flex; gap:10px }
+    button, .linkbtn{ border:0; border-radius:999px; padding:10px 16px; font-weight:600; cursor:pointer; box-shadow: var(--shadow); background: linear-gradient(135deg, rgba(var(--accent),1), rgba(var(--accent2),1)); color:white; transition: transform .05s ease, filter .2s ease; }
+    button:hover{ filter:brightness(1.06) }
+    button:active{ transform:scale(.98) }
+    .ghost{ background: rgba(255,255,255,.6); color: rgb(var(--fg)); backdrop-filter: blur(8px); }
+    [data-theme="dark"] .ghost{ background: rgba(0,0,0,.35); }main{ display:grid; gap:18px }
+.hero{ position:relative; overflow:hidden; border-radius:24px; padding:28px; background: rgba(var(--card), .7); backdrop-filter: blur(10px); box-shadow: var(--shadow); }
+.tag{ position:absolute; top:12px; right:12px; font-size:.75rem; padding:6px 10px; border-radius:999px; background:rgba(var(--accent2),.12); border:1px dashed rgba(var(--accent2),.4) }
+.hero h2{ font-size: clamp(1.35rem, 3.2vw, 2rem); margin:0 0 8px }
+.hero p{ margin:0; opacity:.9 }
+.chips{ margin-top:14px; display:flex; flex-wrap:wrap; gap:8px }
+.chip{ padding:8px 12px; border-radius:999px; font-size:.9rem; background: rgba(var(--accent), .12); border: 1px dashed rgba(var(--accent), .35)}
+
+.grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px }
+.card{ position:relative; background: rgba(var(--card), .7); backdrop-filter: blur(10px); border-radius:20px; padding:18px; box-shadow: var(--shadow); }
+.card h3{ margin:2px 0 8px }
+.small{ opacity:.75; font-size:.92rem }
+
+.footer{ text-align:center; opacity:.7; padding:20px 0 40px }
+
+/* Visualizer canvas */
+#viz{ width:100%; aspect-ratio: 16/9; display:block; border-radius:18px; background: radial-gradient(600px 300px at 50% -10%, rgba(0,0,0,.08), rgba(0,0,0,.0)), rgba(255,255,255,.35); box-shadow: var(--shadow); }
+
+.pulse{ animation: pulse 1.6s infinite ease-in-out }
+@keyframes pulse{ 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+
+a.inline{ color: rgb(var(--accent2)); text-decoration: none; font-weight:600 }
+a.inline:hover{ text-decoration: underline }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="avatar" aria-hidden>💙</div>
+        <div>
+          <h1>Hey Mahek!</h1>
+          <p>Friendly vibes only — from Uttam ✨</p>
+        </div>
+      </div>
+      <div class="actions">
+        <button id="theme" class="ghost" aria-label="Toggle theme">🌙</button>
+        <a class="linkbtn" href="https://www.instagram.com/shining.meh?igsh=NmJwemhnMGo3dmo5" target="_blank" rel="noopener">Open Instagram</a>
+      </div>
+    </header><main>
+  <section class="hero">
+    <span class="tag">Alan Walker Fan</span>
+    <h2 class="pulse">OKAY, NO MORE EXPLANATION</h2>
+    <p id="typewriter" aria-live="polite"></p>
+    <div class="chips">
+      <div class="chip">Alan Walker</div>
+      <div class="chip">NOT YOU 🎵</div>
+      <div class="chip">Chill • Blue • Cyan</div>
+    </div>
+    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
+      <button id="start">Start visualizer</button>
+      <button id="mic" class="ghost">Use microphone</button>
+      <a class="linkbtn" href="https://open.spotify.com/search/not%20you%20alan%20walker" target="_blank" rel="noopener">Play on Spotify</a>
+    </div>
+    <div style="margin-top:14px">
+      <audio id="audio" controls preload="none">
+        <!-- If you own a legal copy, place your audio file in the same folder and set src to it. -->
+        <!-- Example: <source src="notyou.mp3" type="audio/mpeg" /> -->
+      </audio>
+    </div>
+    <div style="margin-top:14px">
+      <canvas id="viz"></canvas>
+    </div>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h3>Vibe Note</h3>
+      <p class="small" id="note">Just a tiny page to say hi 👋</p>
+    </div>
+    <div class="card">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a class="inline" href="https://www.instagram.com/shining.meh?igsh=NmJwemhnMGo3dmo5" target="_blank">Your Insta</a></li>
+        <li><a class="inline" href="https://open.spotify.com/search/not%20you%20alan%20walker" target="_blank">NOT YOU — Spotify</a></li>
+      </ul>
+      <p class="small">(Audio visualizer works with your mic or with a local audio file you own.)</p>
+    </div>
+  </section>
+
+  <p class="footer">Built with ♥, HTML + CSS + JavaScript — no frameworks, just vibes.</p>
+</main>
+
+  </div>  <script>
+    // Theme toggle
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('theme');
+    const saved = localStorage.getItem('theme');
+    if(saved) root.setAttribute('data-theme', saved);
+    const updateIcon = () => themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    updateIcon();
+    themeBtn.addEventListener('click', () => {
+      const cur = root.getAttribute('data-theme') === 'dark' ? '' : 'dark';
+      if(cur) root.setAttribute('data-theme', cur); else root.removeAttribute('data-theme');
+      localStorage.setItem('theme', cur);
+      updateIcon();
+    });
+
+    // Typewriter lines (friend vibe)
+    const tw = document.getElementById('typewriter');
+    const lines = [
+      'Friend energy, playlist on loop. 🎧',
+      'Blue–cyan day, zero explanation needed. 💙',
+      'Walkers on, worries off. 🌀'
+    ];
+    let li = 0, ci = 0, deleting = false; 
+    function tick(){
+      const full = lines[li];
+      if(!deleting){
+        tw.textContent = full.slice(0, ++ci);
+        if(ci === full.length){ deleting = true; setTimeout(tick, 1400); return; }
+      } else {
+        tw.textContent = full.slice(0, --ci);
+        if(ci === 0){ deleting = false; li = (li+1)%lines.length; }
+      }
+      setTimeout(tick, deleting ? 30 : 45);
+    }
+    tick();
+
+    // ===== Alan Walker–style circular audio visualizer =====
+    const canvas = document.getElementById('viz');
+    const ctx = canvas.getContext('2d');
+    function size(){
+      const r = canvas.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = r.width * dpr; canvas.height = r.height * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    }
+    size(); addEventListener('resize', size);
+
+    let audioCtx, analyser, srcNode, micStream;
+    const fftSize = 1024; // smooth detail
+    let dataArray;
+
+    function setupAnalyser(){
+      if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      analyser = audioCtx.createAnalyser();
+      analyser.fftSize = fftSize; analyser.smoothingTimeConstant = 0.85;
+      dataArray = new Uint8Array(analyser.frequencyBinCount);
+    }
+
+    function connectSource(node){
+      const gain = audioCtx.createGain();
+      gain.gain.value = 1.0;
+      node.connect(gain).connect(analyser).connect(audioCtx.destination);
+    }
+
+    function draw(){
+      const w = canvas.width; const h = canvas.height; 
+      ctx.clearRect(0,0,w,h);
+      // Center + base radius
+      const cx = w/2; const cy = h/2; const baseR = Math.min(w,h)/5 + 40;
+
+      // Read spectrum
+      if(analyser){ analyser.getByteFrequencyData(dataArray); }
+      const bars = 120; // a nice, dense ring
+      const step = Math.floor(dataArray.length / bars);
+
+      // Outer glow ring
+      ctx.save();
+      const gradient = ctx.createRadialGradient(cx, cy, baseR*0.6, cx, cy, baseR*1.9);
+      gradient.addColorStop(0, 'rgba(0,191,255,0.15)');
+      gradient.addColorStop(1, 'rgba(30,144,255,0.02)');
+      ctx.fillStyle = gradient; 
+      ctx.beginPath(); ctx.arc(cx, cy, baseR*1.9, 0, Math.PI*2); ctx.fill();
+      ctx.restore();
+
+      for(let i=0;i<bars;i++){
+        const angle = (i / bars) * Math.PI * 2; 
+        const v = analyser ? dataArray[i*step] / 255 : (Math.sin((Date.now()/600) + i*0.3)*0.5+0.5);
+        const amp = analyser ? (v * 140) : (v * 120);
+        const r1 = baseR; const r2 = baseR + amp;
+
+        // Bar start
+        const x1 = cx + Math.cos(angle) * r1; 
+        const y1 = cy + Math.sin(angle) * r1;
+        // Bar end
+        const x2 = cx + Math.cos(angle) * r2; 
+        const y2 = cy + Math.sin(angle) * r2;
+
+        // Draw bar (thicker near center)
+        ctx.save();
+        ctx.lineWidth = 3.5; 
+        const hue = 190 + (i/bars)*40; // blue→cyan sweep
+        ctx.strokeStyle = `hsla(${hue}, 100%, 55%, 0.95)`;
+        ctx.beginPath();
+        ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+        ctx.restore();
+      }
+
+      // Center logo-esque ring
+      ctx.save();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = 'rgba(0,191,255,0.65)';
+      ctx.beginPath(); ctx.arc(cx, cy, baseR*0.68, 0, Math.PI*2); ctx.stroke();
+      ctx.restore();
+
+      requestAnimationFrame(draw);
+    }
+    draw(); // runs even without audio (fake animation)
+
+    // Hook up buttons
+    const startBtn = document.getElementById('start');
+    const micBtn = document.getElementById('mic');
+    const audioEl = document.getElementById('audio');
+
+    startBtn.addEventListener('click', async () => {
+      try{
+        if(!audioCtx) setupAnalyser();
+        await audioCtx.resume();
+        if(!srcNode){
+          const node = audioCtx.createMediaElementSource(audioEl);
+          connectSource(node);
+          srcNode = node;
+        }
+        // If there's no src set, user can still press Play on controls after this.
+      }catch(e){ alert('Audio start blocked: '+e.message); }
+    });
+
+    micBtn.addEventListener('click', async () => {
+      try{
+        if(!audioCtx) setupAnalyser();
+        await audioCtx.resume();
+        if(micStream){ return; }
+        micStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const micNode = audioCtx.createMediaStreamSource(micStream);
+        connectSource(micNode);
+        micBtn.textContent = 'Mic on ✅';
+      }catch(e){ alert('Mic permission needed: '+e.message); }
+    });
+  </script></body>
+</html>
