@@ -109,7 +109,7 @@
     <section class="hero" aria-labelledby="section-title">
       <span class="badge">I'm the weirdest</span>
       <h2 id="section-title">OKAY, NO MORE EXPLANATION</h2>
-      <p class="sub">Friend energy, playlist on loop. 🎧</p>
+      <p id="typewriter" aria-live="polite"></p>
 
       <div class="chips">
         <div class="chip">Alan Walker</div>
@@ -325,6 +325,27 @@
       a.appendChild(img);
       a.appendChild(ov);
       instaGrid.appendChild(a);
+
+      // Typewriter lines (friend vibe)
+    const tw = document.getElementById('typewriter');
+    const lines = [
+      'Friend energy, playlist on loop. 🎧',
+      'Blue–cyan day, zero explanation needed. 💙',
+      'Walkers on, worries off. 🌀'
+    ];
+    let li = 0, ci = 0, deleting = false; 
+    function tick(){
+      const full = lines[li];
+      if(!deleting){
+        tw.textContent = full.slice(0, ++ci);
+        if(ci === full.length){ deleting = true; setTimeout(tick, 1400); return; }
+      } else {
+        tw.textContent = full.slice(0, --ci);
+        if(ci === 0){ deleting = false; li = (li+1)%lines.length; }
+      }
+      setTimeout(tick, deleting ? 30 : 45);
+    }
+    tick();
     });
   </script>
 </body>
