@@ -166,6 +166,7 @@
 
     <p class="footer">Built with ♥, HTML + CSS + JavaScript — no frameworks, just vibes.</p>
   </div>
+  div id="instagram-posts"></div>
 
   <!-- ====== SCRIPT ====== -->
   <script>
@@ -278,6 +279,16 @@
       { url: "https://www.instagram.com/p/DIbgoyuvst7/?igsh=ZnB3emJsdjNmbmt5", img: "post3.webp",  alt: "MehPost#3" },
       // add/remove as you like
     ];
+
+    const container = document.getElementById("instagram-posts");
+
+instaPosts.forEach(post => {
+  container.innerHTML += `
+    <a href="${post.url}" target="_blank">
+      <img src="${post.img}" alt="${post.alt}">
+    </a>
+  `;
+});
 
     const instaGrid = document.getElementById('instaGrid');
 
